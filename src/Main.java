@@ -1,7 +1,7 @@
 import java.util.Random;
 
 class Main {
-    public static final int HUMANS_COUNT = 2;
+    public static final int HUMANS_COUNT = 4;
     public static final Human[] HUMANS = new Human[HUMANS_COUNT];
     public static final int START_HUMAN_HEALTH = 100;
     public static final int START_HUMAN_HITS = 15;
@@ -13,7 +13,7 @@ class Main {
 
     private static final Random RANDOM = new Random();
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         //Устанавливаем войска альянса
         for (int i = 0; i < HUMANS.length; i++) {
@@ -25,11 +25,12 @@ class Main {
             ORCS[i] = new Orc("Орк" + (i + 1), START_ORC_HEALTH, START_ORC_HITS);
         }
 
-        //бой
-        hit(RANDOM.nextBoolean(), RANDOM.nextBoolean(), RANDOM.nextBoolean(), selectOrc(), selectHuman());
+        //бой идет до тех пор пока в одно из команд не останется живых бойцов
+        while (isAlive()) {
+            //передает кто атакует, случайного орка, случайного человека
+            hit(RANDOM.nextBoolean(), selectOrc(), selectHuman());
 
-        for (int i = 0; i < 2; i++) {
-            System.out.println(HUMANS[i].getHealth() + " " + ORCS[i].getHealth());
+            printText();
         }
     }
 
@@ -53,11 +54,65 @@ class Main {
         }
     }
 
-    public static void hit(boolean whoHit, boolean isAttack, boolean isDef, Orc orc, Human human) {
+    //наносим удар
+    private static void hit(boolean whoHit, Orc orc, Human human) {
+        //передаем человека, орка, зона атаки, зона защиты, сила атаки
         if (whoHit) {
-            human.attack(human, orc, isAttack,isDef);
+            human.attack(human, orc, RANDOM.nextInt(3), RANDOM.nextInt(3), RANDOM.nextInt(5));
         } else {
-            orc.attack(orc, human, isAttack, isDef);
+            orc.attack(orc, human, RANDOM.nextInt(3), RANDOM.nextInt(3), RANDOM.nextInt(3));
         }
+    }
+
+    private static boolean isAlive() {
+
+        boolean isAliveHuman = false;
+
+        for (Human h : HUMANS) {
+            if (h.health > 0) {
+                isAliveHuman = true;
+                break;
+            }
+        }
+
+        boolean isAliveOrc = false;
+
+        for (Orc o : ORCS) {
+            if (o.health > 0) {
+                isAliveOrc = true;
+                break;
+            }
+        }
+
+        if (!isAliveHuman) {
+            System.out.println("Победила Орда");
+            return false;
+        }
+
+        if (!isAliveOrc) {
+            System.out.println("Победил Альянс");
+            return false;
+        }
+
+        return true;
+    }
+
+    private static void printText() {
+
+        StringBuilder text = new StringBuilder();
+
+        for(Human h:HUMANS) {
+            text.append(h.health);
+            text.append(" ");
+        }
+
+        text.append("    ");
+
+        for(Orc o:ORCS) {
+            text.append(o.health);
+            text.append(" ");
+        }
+
+        System.out.println(text);
     }
 }
