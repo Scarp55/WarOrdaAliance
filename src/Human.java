@@ -5,17 +5,17 @@ public class Human extends Player {
     }
 
     public void attack(Human defender, Orc attacker, int isAttack, int isDef, double kof) {
-        System.out.println(attacker.getName() + " атакует " + defender.getName());
+        System.out.print(attacker.getName() + " атакует " + defender.getName());
         if (isAttack != isDef) {
             double damage = attacker.getHitPoints() * (1 - kof / 10);
-            System.out.println(attacker.getName() + " нанес " + defender.getName() + " " + damage + " урона");
+            System.out.println(" и наносит " + damage + " урона");
             this.health -= damage;
             this.hitPoints *= 0.9;
             if (this.hitPoints==0) {
                 this.hitPoints += 1;
             }
         } else {
-            System.out.println("Удар заблокирован");
+            System.out.println(" но удар заблокирован");
         }
     }
 }
