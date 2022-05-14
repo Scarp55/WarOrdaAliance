@@ -6,7 +6,9 @@ public class Orc extends Player {
     public void attack(Orc defender, Human attacker, int isAttack, int isDef, double kof) {
         System.out.println(attacker.getName() + " атакует " + defender.getName());
         if (isAttack != isDef) {
-            this.health -= attacker.getHitPoints() * (1 - kof / 10);
+            double damage = attacker.getHitPoints() * (1 - kof / 10);
+            System.out.println(attacker.getName() + " нанес " + defender.getName() + " " + damage + " урона");
+            this.health -= damage;
             this.hitPoints *= 0.9;
             if(this.hitPoints==0) {
                 this.hitPoints += 1;

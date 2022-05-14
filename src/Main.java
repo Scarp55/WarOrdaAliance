@@ -1,16 +1,15 @@
+import java.util.Arrays;
 import java.util.Random;
 
 class Main {
-    public static final int HUMANS_COUNT = 4;
-    public static final Human[] HUMANS = new Human[HUMANS_COUNT];
-    public static final int START_HUMAN_HEALTH = 100;
-    public static final int START_HUMAN_HITS = 15;
-
-    public static final int ORCS_COUNT = 2;
-    public static final Orc[] ORCS = new Orc[ORCS_COUNT];
-    public static final int START_ORC_HEALTH = 200;
-    public static final int START_ORC_HITS = 30;
-
+    private static final int HUMANS_COUNT = 4;
+    private static final Human[] HUMANS = new Human[HUMANS_COUNT];
+    private static final int START_HUMAN_HEALTH = 100;
+    private static final int START_HUMAN_HITS = 15;
+    private static final int ORCS_COUNT = 2;
+    private static final Orc[] ORCS = new Orc[ORCS_COUNT];
+    private static final int START_ORC_HEALTH = 200;
+    private static final int START_ORC_HITS = 30;
     private static final Random RANDOM = new Random();
 
     public static void main(String[] args) {
@@ -27,29 +26,23 @@ class Main {
 
         //бой идет до тех пор пока в одно из команд не останется живых бойцов
         while (isAlive()) {
+            //индекс случайного живого орка
+            int indexOrc = selectPlayer(ORCS);
+            //индекс случайного живого человека
+            int indexHuman = selectPlayer(HUMANS);
             //передает кто атакует, случайного орка, случайного человека
-            hit(RANDOM.nextBoolean(), selectOrc(), selectHuman());
+            hit(RANDOM.nextBoolean(), ORCS[indexOrc], HUMANS[indexHuman]);
 
             printText();
         }
     }
 
-    //выбор бойца из альянса
-    private static Human selectHuman() {
+    //индекс случайного живого бойца
+    private static int selectPlayer(Player[] players) {
         while (true) {
-            Human human = HUMANS[RANDOM.nextInt(HUMANS.length)];
-            if (human.getHealth() > 0) {
-                return human;
-            }
-        }
-    }
-
-    //выбор бойца из орды
-    private static Orc selectOrc() {
-        while (true) {
-            Orc orc = ORCS[RANDOM.nextInt(ORCS.length)];
-            if (orc.getHealth() > 0) {
-                return orc;
+            Player player = players[RANDOM.nextInt(players.length)];
+            if (player.getHealth() > 0) {
+                return Arrays.asList(players).indexOf(player);
             }
         }
     }

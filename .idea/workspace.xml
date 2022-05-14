@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2946c63a-9260-4b17-bb28-02b51a990238" name="Changes" comment="metod hit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="2946c63a-9260-4b17-bb28-02b51a990238" name="Changes" comment="polimorfizm">
       <change beforePath="$PROJECT_DIR$/src/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Human.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Orc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Orc.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +21,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="2dc9ab4eafa41673f256dcaa0b55fd2a902227a9" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -51,6 +54,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -86,7 +91,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -95,7 +112,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="metod hit" />
-    <option name="LAST_COMMIT_MESSAGE" value="metod hit" />
+    <MESSAGE value="polimorfizm" />
+    <option name="LAST_COMMIT_MESSAGE" value="polimorfizm" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
